@@ -1,0 +1,49 @@
+package operacoes;
+
+import java.util.Scanner;
+
+public class SistemaCalculo {
+    public static void main(String[] args) {
+
+        int[] resultados = new int[10];
+        Scanner entrada = new Scanner(System.in);
+
+        for (int i = 0; i < resultados.length; i++) {
+            int valorFinal = 0;
+
+            System.out.println("Digite o primeiro valor:");
+            int num1 = entrada.nextInt();
+
+            System.out.println("Digite o segundo valor:");
+            int num2 = entrada.nextInt();
+
+            System.out.println("Informe a operação (+, -, *, /, %):");
+            char op = entrada.next().charAt(0);
+
+            if (op == '+') {
+                valorFinal = num1 + num2;
+                System.out.println(valorFinal);
+            } else if (op == '-') {
+                valorFinal = num1 - num2;
+                System.out.println(valorFinal);
+            } else if (op == '*') {
+                valorFinal = num1 * num2;
+                System.out.println(valorFinal);
+            } else if (op == '/') {
+                valorFinal = num1 / num2;
+                System.out.println(valorFinal);
+            } else if (op == '%') {
+                valorFinal = num1 % num2;
+                System.out.println(valorFinal);
+            }
+
+            resultados[i] = valorFinal;
+        }
+
+        for (int i = 0; i < resultados.length; i++) {
+            System.out.print(resultados[i] + " ");
+        }
+
+        entrada.close();
+    }
+}
