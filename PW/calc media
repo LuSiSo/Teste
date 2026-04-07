@@ -1,1 +1,81 @@
+import java.util.Scanner;
 
+public class calculo_lista {
+    public static void main(String[] args) {
+
+        Scanner entradaNumeros = new Scanner(System.in);
+        Scanner entradaOpcao = new Scanner(System.in);
+
+        double[] registros = new double[10];
+
+        int pos = 0;
+        boolean ativo = true;
+        double resultado = 0;
+
+        while (ativo) {
+
+            System.out.println("Informe o primeiro número:");
+            double n1 = entradaNumeros.nextDouble();
+
+            System.out.println("Informe o segundo número:");
+            double n2 = entradaNumeros.nextDouble();
+
+            System.out.println("Escolha a operação:\n1) Soma\n2) Subtração\n3) Multiplicação\n4) Divisão");
+            int opcao = entradaOpcao.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    resultado = n1 + n2;
+                    System.out.println("Resultado da soma: " + resultado);
+                    registros[pos] = resultado;
+                    break;
+
+                case 2:
+                    resultado = n1 - n2;
+                    System.out.println("Resultado da subtração: " + resultado);
+                    registros[pos] = resultado;
+                    break;
+
+                case 3:
+                    resultado = n1 * n2;
+                    System.out.println("Resultado da multiplicação: " + resultado);
+                    registros[pos] = resultado;
+                    break;
+
+                case 4:
+                    resultado = n1 / n2;
+                    System.out.println("Resultado da divisão: " + resultado);
+                    registros[pos] = resultado;
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
+            }
+
+            System.out.println("Deseja continuar?\n1 - Sim\n2 - Não");
+            int continuar = entradaOpcao.nextInt();
+
+            if (continuar != 1) {
+                System.out.println("Encerrando...");
+                ativo = false;
+            }
+
+            if (pos < 9) {
+                pos++;
+            }
+
+            System.out.println("Deseja ver algum resultado anterior? (sim/nao)");
+            String respostaUsuario = entradaNumeros.next();
+
+            if (respostaUsuario.equalsIgnoreCase("sim")) {
+                System.out.println("Digite a posição (0 a 9):");
+                int indiceBusca = entradaNumeros.nextInt();
+                System.out.println("Valor armazenado: " + registros[indiceBusca]);
+            }
+        }
+
+        entradaNumeros.close();
+        entradaOpcao.close();
+    }
+}
