@@ -1,0 +1,51 @@
+package sistema_aluno;
+
+import java.util.Scanner;
+
+public class CadastroAluno {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("Informe o nome do estudante:");
+        String aluno = entrada.nextLine();
+
+        System.out.println("Informe o nome da instituição:");
+        String instituicao = entrada.nextLine();
+
+        double total = 0;
+        int quantidadeNotas = 6;
+
+        for (int contador = 1; contador <= quantidadeNotas; contador++) {
+            double valorNota;
+
+            while (true) {
+                System.out.println("Digite a nota " + contador + " (entre 0 e 10):");
+                valorNota = entrada.nextDouble();
+
+                if (valorNota >= 0 && valorNota <= 10) {
+                    break;
+                } else {
+                    System.out.println("Valor inválido! Digite uma nota válida.");
+                }
+            }
+
+            total += valorNota;
+        }
+
+        double resultado = total / quantidadeNotas;
+
+        System.out.println("\n=== Resultado Escolar ===");
+        System.out.println("Instituição: " + instituicao);
+        System.out.println("Aluno: " + aluno);
+        System.out.println("Média: " + resultado);
+
+        if (resultado >= 7) {
+            System.out.println("Situação: Aprovado");
+        } else {
+            System.out.println("Situação: Reprovado");
+        }
+
+        entrada.close();
+    }
+}
